@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
@@ -10,8 +11,9 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column'
   },
-  margin: {
-    margin: theme.spacing(1)
+  button: {
+    margin: theme.spacing(1),
+    width: `300px`
   }
 }));
 
@@ -24,26 +26,35 @@ function App() {
   };
 
   return (
-    <Paper className={classes.root}>
-      <Button
-        variant="outlined"
-        color="primary"
-        size="large"
-        className={classes.margin}
-        href={`itms-services://?action=download-manifest&url=${buildUrl.manifest}`}
-      >
-        INSTALL IOS
-      </Button>
-      <Button
-        variant="outlined"
-        color="secondary"
-        size="large"
-        className={classes.margin}
-        href={`${buildUrl.apk}`}
-      >
-        DOWNLOAD ANDROID APK
-      </Button>
-    </Paper>
+    <Grid
+      container
+      spacing={0}
+      align="center"
+      justify="center"
+      direction="column"
+      style={{ backgroundColor: 'teal' }}
+    >
+      <Paper className={classes.root} elevation={3}>
+        <Button
+          variant="outlined"
+          color="primary"
+          size="large"
+          className={classes.button}
+          href={`itms-services://?action=download-manifest&url=${buildUrl.manifest}`}
+        >
+          INSTALL IOS
+        </Button>
+        <Button
+          variant="outlined"
+          color="secondary"
+          size="large"
+          className={classes.button}
+          href={`${buildUrl.apk}`}
+        >
+          DOWNLOAD ANDROID APK
+        </Button>
+      </Paper>
+    </Grid>
   );
 }
 
